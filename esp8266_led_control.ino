@@ -2,8 +2,8 @@
 #include <ESP8266WebServer.h>
 
 // Ganti dengan WiFi Anda (harus 2.4 GHz)
-const char* WIFI_SSID = "Kaleng Krupuk";
-const char* WIFI_PASS = "42786091TLL";
+const char* WIFI_SSID = "MASUKKAN NAMA WIFI ANDA";
+const char* WIFI_PASS = "MASUKKAN PASSWORD WIFI ANDA";
 
 struct Led {
   const char* nama;
