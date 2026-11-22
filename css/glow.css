@@ -1,0 +1,43 @@
+@keyframes logoPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.45)) drop-shadow(0 0 12px rgba(56, 189, 248, 0.25));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.85)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.5));
+    transform: scale(1.03);
+  }
+}
+.logo-glow-pulse {
+  animation: logoPulse 2.8s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform, filter;
+}
+
+@keyframes pulseGlowRed {
+  0%, 100% { box-shadow: 0 0 8px rgba(244,63,94,.25), inset 0 0 6px rgba(244,63,94,.15); border-color: rgba(244,63,94,.5); }
+  50%      { box-shadow: 0 0 20px rgba(244,63,94,.6), 0 0 35px rgba(244,63,94,.25), inset 0 0 10px rgba(244,63,94,.3); border-color: rgba(244,63,94,.9); }
+}
+@keyframes pulseGlowYellow {
+  0%, 100% { box-shadow: 0 0 8px rgba(245,158,11,.25), inset 0 0 6px rgba(245,158,11,.15); border-color: rgba(245,158,11,.5); }
+  50%      { box-shadow: 0 0 20px rgba(245,158,11,.6), 0 0 35px rgba(245,158,11,.25), inset 0 0 10px rgba(245,158,11,.3); border-color: rgba(245,158,11,.9); }
+}
+@keyframes pulseGlowGreen {
+  0%, 100% { box-shadow: 0 0 8px rgba(16,185,129,.25), inset 0 0 6px rgba(16,185,129,.15); border-color: rgba(16,185,129,.5); }
+  50%      { box-shadow: 0 0 20px rgba(16,185,129,.6), 0 0 35px rgba(16,185,129,.25), inset 0 0 10px rgba(16,185,129,.3); border-color: rgba(16,185,129,.9); }
+}
+
+.pulse-glow-red    { animation: pulseGlowRed 2s cubic-bezier(.4, 0, .6, 1) infinite; }
+.pulse-glow-yellow { animation: pulseGlowYellow 2s cubic-bezier(.4, 0, .6, 1) infinite; }
+.pulse-glow-green  { animation: pulseGlowGreen 2s cubic-bezier(.4, 0, .6, 1) infinite; }
+
+/* Saat Master Glow dimatikan (class pada <body>) */
+body.master-glow-disabled .pulse-glow-red,
+body.master-glow-disabled .pulse-glow-yellow,
+body.master-glow-disabled .pulse-glow-green,
+body.master-glow-disabled .logo-glow-pulse,
+body.master-glow-disabled .animate-pulse {
+  animation: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}

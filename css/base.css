@@ -1,0 +1,16 @@
+body {
+  background-color: #0a0e16;
+  color: #e2e8f0;
+  font-family: 'Space Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tab-btn.active {
+  background-color: #1c2232;
+  color: #38bdf8;
+  border-color: #38bdf8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.custom-scroll::-webkit-scrollbar { width: 4px; }
+.custom-scroll::-webkit-scrollbar-thumb { background: #242b3d; border-radius: 4px; }

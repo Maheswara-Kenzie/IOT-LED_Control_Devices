@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<noscript><meta content="0; url=koneksi.html" http-equiv="refresh"/></noscript>
+<title>Verisium</title>
+</head>
+<body style="background:#0a0e16;color:#e2e8f0;font-family:sans-serif">
+<p>Mengalihkan ke <a href="koneksi.html" style="color:#38bdf8">halaman Koneksi</a>...</p>
+<script>
+  // Sudah pernah terhubung -> langsung ke Saklar, kalau belum -> Koneksi
+  var target = 'koneksi.html';
+  try { if (localStorage.getItem('verisium.connected') === '1') target = 'saklar.html'; } catch (e) {}
+  location.replace(target);
+</script>
+</body></html>

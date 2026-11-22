@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verisium - Telemetri</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="js/tailwind-config.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="css/base.css" rel="stylesheet"/>
+<link href="css/glow.css" rel="stylesheet"/>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-sky-500/30 selection:text-sky-300" data-page="telemetri">
+
+<div id="app-header"></div>
+
+<main class="flex-1 max-w-md w-full mx-auto p-4 space-y-4">
+  <div class="space-y-4" id="app-tabs"></div>
+
+  <!-- ============ HALAMAN: TELEMETRI ============ -->
+  <section class="space-y-4">
+    <div class="grid grid-cols-2 gap-2.5 font-mono">
+      <div class="bg-[#0f131c] border border-[#242b3d] p-3 rounded-xl flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </div>
+        <div class="overflow-hidden"><div class="text-[10px] text-slate-400">IP NODE</div><div class="text-xs font-bold text-white truncate" id="t-ip">-</div></div>
+      </div>
+      <div class="bg-[#0f131c] border border-[#242b3d] p-3 rounded-xl flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </div>
+        <div><div class="text-[10px] text-slate-400">BAUDRATE</div><div class="text-xs font-bold text-white" id="t-baud">115200 bps</div></div>
+      </div>
+      <div class="bg-[#0f131c] border border-[#242b3d] p-3 rounded-xl flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><div class="text-[10px] text-slate-400">RAM BEBAS</div><div class="text-xs font-bold text-emerald-400" id="t-heap">-</div></div>
+      </div>
+      <div class="bg-[#0f131c] border border-[#242b3d] p-3 rounded-xl flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </div>
+        <div><div class="text-[10px] text-slate-400">UPTIME</div><div class="text-xs font-bold text-white" id="t-up">-</div></div>
+      </div>
+    </div>
+
+    <div class="bg-[#0f131c] rounded-xl border border-[#242b3d] overflow-hidden">
+      <div class="bg-[#131824] px-3.5 py-2.5 border-b border-[#242b3d] flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <div class="flex space-x-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+          </div>
+          <span class="font-mono text-xs font-semibold text-slate-300 ml-1">Serial ESP8266</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button class="px-2 py-0.5 rounded bg-[#1c2232] hover:bg-[#283247] text-slate-300 text-[10px] font-mono transition" onclick="Telemetri.copy()">Salin</button>
+          <button class="px-2 py-0.5 rounded bg-[#1c2232] hover:bg-rose-950/40 text-slate-300 text-[10px] font-mono transition" onclick="Telemetri.clear()">Hapus</button>
+        </div>
+      </div>
+      <div class="p-3 bg-[#0a0e16] font-mono text-[11px] leading-relaxed custom-scroll max-h-56 min-h-[8rem] overflow-y-auto space-y-1 text-slate-300" id="term">
+        <div id="term-cursor"></div>
+      </div>
+      <div class="px-3 py-1.5 bg-[#131824] border-t border-[#242b3d] flex items-center justify-between text-[10px] font-mono text-slate-400">
+        <span>AUTO-SCROLL: AKTIF · UTF-8</span>
+        <span class="text-sky-400" id="term-count">0 BARIS</span>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<div id="app-nav"></div>
+
+<script src="js/config.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/api.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/pages/telemetri.js"></script>
+<script src="js/boot.js"></script>
+</body></html>
